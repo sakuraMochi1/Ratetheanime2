@@ -31,6 +31,9 @@ public class RatedAnime {
     @NotNull
     private String sinopsis;
 
+    @NotNull
+    private String estudio;
+
     // Falta funcion para incluir foto de portada del anime
 
     @ManyToOne
