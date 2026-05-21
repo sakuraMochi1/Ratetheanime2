@@ -1,16 +1,16 @@
-# RateTheAnime 🎬🍿
+# RateTheAnime 
 
 Bienvenido a **RateTheAnime**, una plataforma web diseñada para los amantes del anime. Nuestro proyecto permite a los usuarios explorar una lista de animes, calificarlos con sus puntuaciones y compartir sus opiniones dejando reseñas personalizadas.
 
 ---
 
-## 👥 Autores
+##  Autores
 Este proyecto fue desarrollado por:
 *   **Augusto Medina**
 *   **Arturo Cabello**
 ---
 
-## 🛠️ Requisitos Previos
+##  Requisitos Previos
 
 Antes de ejecutar la aplicación, asegúrate de contar con el siguiente entorno configurado:
 *   **Java 21** (JDK 21 instalado y configurado en las variables de entorno).
@@ -19,7 +19,7 @@ Antes de ejecutar la aplicación, asegúrate de contar con el siguiente entorno 
 *   **Maven** (opcional si usas mvnw)
 ---
 
-## 🚀 Instrucciones de Ejecución
+##  Instrucciones de Ejecución
 
 Sigue estos pasos para poner en marcha el proyecto de forma local:
 
@@ -29,14 +29,14 @@ Sigue estos pasos para poner en marcha el proyecto de forma local:
 
 ---
 
-## 🌐 Endpoints Principales (Rutas de Acceso)
+##  Endpoints Principales (Rutas de Acceso)
 
 Puedes interactuar con las diferentes secciones de la API utilizando los siguientes enlaces en tu navegador o cliente API (como Postman):
 
 *   **Sección de Usuarios:**  
-    👉 `http://localhost:8080/api/usuarios` (Para gestionar y visualizar la información de los usuarios).
+     `http://localhost:8080/api/usuarios` (Para gestionar y visualizar la información de los usuarios).
 *   **Sección de Calificaciones de Anime:**  
-    👉 `http://localhost:8080/api/ratedanimes` (Para consultar la lista de animes y sus respectivas puntuaciones).
+     `http://localhost:8080/api/ratedanimes` (Para consultar la lista de animes y sus respectivas puntuaciones).
 
 ---
-⭐ *¡Gracias por visitar nuestro proyecto!
+ *¡Gracias por visitar nuestro proyecto!
