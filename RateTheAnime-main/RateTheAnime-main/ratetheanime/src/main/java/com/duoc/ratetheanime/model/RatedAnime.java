@@ -22,21 +22,22 @@ public class RatedAnime {
     @NotBlank
     private String animeTitulo;
 
-    @NotNull
+    @NotBlank
     private String calificacion;
 
-    @NotNull
+    @NotBlank
     private String comentario;
 
-    @NotNull
+    @NotBlank
+    @Column(length = 1500)
     private String sinopsis;
 
-    @NotNull
+    @NotBlank
     private String estudio;
 
     // Falta funcion para incluir foto de portada del anime
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     

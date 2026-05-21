@@ -34,8 +34,8 @@ public class RatedAnimeService {
 
     public RatedAnimeDTO saveRatedAnime(RatedAnime ratedAnime) {
         log.info("guardando nueva calificacion para: {}", ratedAnime.getAnimeTitulo());
-        RatedAnime anime = ratedAnimeRepository.findById(ratedAnime.getId()).orElse(null);
-        return (anime != null) ? convertirADTO(anime) : null;
+        RatedAnime animeGuardado = ratedAnimeRepository.save(ratedAnime);
+        return convertirADTO(animeGuardado);
     }
 
     public RatedAnimeDTO getRatedAnimeById(Integer id) {
