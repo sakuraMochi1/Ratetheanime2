@@ -22,7 +22,7 @@ public class RatedAnime {
     @NotBlank
     private String animeTitulo;
 
-    @NotBlank
+    @NotNull
     private String calificacion;
 
     @NotBlank
