@@ -38,7 +38,7 @@ public class UsuarioService {
     }
 
     // 3. BUSCAR POR ID (Cambiado a UsuarioDTO)
-    public UsuarioDTO getUsuarioById(Long id) {
+    public UsuarioDTO getUsuarioById(Integer id) {
         log.info("Buscando usuario con ID: {}", id);
         Usuario u = usuarioRepository.findById(id).orElse(null);
         
@@ -64,7 +64,7 @@ public class UsuarioService {
     }
 
     // 5. ELIMINAR (Se mantiene void, está perfecto)
-    public void deleteUsuario(Long id) {
+    public void deleteUsuario(Integer id) {
         log.info("Eliminando usuario con ID: {}", id);
         usuarioRepository.deleteById(id);
     }

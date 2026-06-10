@@ -41,7 +41,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> buscarUsuario(@PathVariable Long id) {
+    public ResponseEntity<UsuarioDTO> buscarUsuario(@PathVariable Integer id) {
         log.info("GET /api/usuarios/{} - Buscando usuario por ID", id);
         UsuarioDTO dto = usuarioService.getUsuarioById(id);
         if (dto == null) {
@@ -51,7 +51,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
+    public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario usuario){
         log.info("PUT /api/usuarios/{} - Iniciando actualización", id);
         usuario.setId(id);
         
@@ -70,7 +70,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarUsuario(@PathVariable Integer id) {
         log.info("DELETE /api/usuarios/{} - Solicitud de eliminación recibida", id);
 
         if (usuarioService.getUsuarioById(id) == null) {
