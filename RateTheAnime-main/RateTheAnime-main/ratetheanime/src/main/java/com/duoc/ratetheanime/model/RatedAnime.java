@@ -39,6 +39,6 @@ public class RatedAnime {
 
     @OneToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Usuario_Pagina usuario;
     
 }

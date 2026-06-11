@@ -1,7 +1,7 @@
 package com.duoc.ratetheanime.security;
 
-import com.duoc.ratetheanime.model.Usuario;
-import com.duoc.ratetheanime.repository.UsuarioRepository;
+import com.duoc.ratetheanime.model.Usuario_Login;
+import com.duoc.ratetheanime.repository.UsuarioLoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,11 +16,11 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioLoginRepository usuarioLoginRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository
+        Usuario_Login usuario = usuarioLoginRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
 

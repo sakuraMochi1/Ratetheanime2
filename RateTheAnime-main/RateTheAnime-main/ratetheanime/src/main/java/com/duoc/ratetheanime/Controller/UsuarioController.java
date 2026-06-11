@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
-import com.duoc.ratetheanime.model.Usuario;
+
+import com.duoc.ratetheanime.model.Usuario_Pagina;
 import com.duoc.ratetheanime.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -35,7 +36,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> agregarUsuario(@Valid @RequestBody Usuario usuario) {
+    public ResponseEntity<UsuarioDTO> agregarUsuario(@Valid @RequestBody Usuario_Pagina usuario) {
         log.info("POST /api/usuarios - Creando un usuario: {}", usuario.getUsername()); 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUsuario(usuario));
     }
@@ -51,7 +52,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario usuario){
+    public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario_Pagina usuario){
         log.info("PUT /api/usuarios/{} - Iniciando actualización", id);
         usuario.setId(id);
         

@@ -2,8 +2,8 @@ package com.duoc.ratetheanime.Controller;
 
 import com.duoc.ratetheanime.dto.AuthRequest;
 import com.duoc.ratetheanime.dto.AuthResponse;
-import com.duoc.ratetheanime.model.Usuario;
-import com.duoc.ratetheanime.repository.UsuarioRepository;
+import com.duoc.ratetheanime.model.Usuario_Login;
+import com.duoc.ratetheanime.repository.UsuarioLoginRepository;
 import com.duoc.ratetheanime.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,20 +30,20 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioLoginRepository usuarioLoginRepository;
 
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRequest request) {
-         if (usuarioRepository.findByUsername(request.getUsername()).isPresent()) {
+         if (usuarioLoginRepository.findByUsername(request.getUsername()).isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
         }
 
-        Usuario usuario = new Usuario();
+        Usuario_Login usuario = new Usuario_Login();
         usuario.setUsername(request.getUsername());
         usuario.setPassword(passwordEncoder.encode(request.getPassword()));
         usuario.setRole("ROLE_USER");
-        usuarioRepository.save(usuario);
+        usuarioLoginRepository.save(usuario);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente");
     }

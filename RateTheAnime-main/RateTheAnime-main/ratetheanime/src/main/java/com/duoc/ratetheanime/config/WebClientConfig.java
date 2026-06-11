@@ -1,6 +1,5 @@
 package com.duoc.ratetheanime.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -8,14 +7,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
-    @Value("${openmeteo.base-url}")
-    private String openMeteoBaseUrl;
-
     @Bean
-    public WebClient weatherWebClient() {
+    public WebClient malWebClient() {
         return WebClient.builder()
-                .baseUrl(openMeteoBaseUrl)
-                .defaultHeader("Accept", "application/json")
+                .baseUrl("https://api.myanimelist.net/v2")
+                .defaultHeader("Content-Type", "application/json")
                 .build();
     }
 }
