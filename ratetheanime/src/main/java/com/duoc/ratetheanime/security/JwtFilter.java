@@ -1,9 +1,8 @@
 package com.duoc.ratetheanime.security;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,17 +10,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import java.io.IOException;
-import java.util.List;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Filtro JWT que se ejecuta una vez por cada request HTTP (OncePerRequestFilter).
- *
- * Flujo:
- *  1. Lee el header "Authorization: Bearer <token>"
- *  2. Valida el token con JwtUtil
- *  3. Si es válido, extrae username y rol y los registra en el SecurityContext
- *  4. Spring Security usa ese contexto para aplicar las reglas de autorización
+ * Filtro JWT que se ejecuta una vez por cada request HTTP.
+ * Extrae el token, limpia el formato de los roles y da acceso al contexto.
  */
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -44,7 +40,14 @@ public class JwtFilter extends OncePerRequestFilter {
                 String username = jwtUtil.extractUsername(token);
                 String role = jwtUtil.extractRole(token);
 
-                // Construye el objeto de autenticación con el rol del usuario
+                // Limpieza de corchetes [ ] o comillas que suelen meter las librerías JWT
+                if (role != null) {
+                    role = role.replace("[", "").replace("]", "").replace("\"", "").trim();
+                }
+
+                System.out.println("Filtro procesando - Usuario: " + username + " -> Autoridad limpia inyectada: " + role);
+
+                // Construye el objeto de autenticación con la autoridad limpia
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                         username,
                         null,
