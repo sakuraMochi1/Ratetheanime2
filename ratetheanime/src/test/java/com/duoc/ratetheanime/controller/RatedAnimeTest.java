@@ -36,5 +36,56 @@ class RatedAnimeTest {
             .estudio("White Fox")
             .build();
     }
+
+@Test
+void obtener_anime_por_id_exitoso(){
+    int idBuscar = 1;
     
+    RatedAnimeDTO ratedAnimeDTO = RatedAnimeDTO.builder()
+            .animeTitulo("Attack on Titan")
+            .calificacion("9.5")
+            .comentario("Excelente adaptacion")
+            .sinopsis("Humanos contra titanes")
+            .estudio("MAPPA")
+            .build();
+
+    when(ratedAnimeService.getRatedAnimeById(idBuscar)).thenReturn(ratedAnimeDTO);
+
+    ResponseEntity<RatedAnimeDTO> respuesta = ratedAnimeController.buscarRatedAnime(idBuscar);
+
+    assertNotNull(respuesta);
+    assertEquals(HttpStatus.OK, respuesta.getStatusCode()); 
+    assertEquals("Attack on Titan", respuesta.getBody().getAnimeTitulo());
+
+    }
+
+    @Test
+    void obtener_anime_por_id_no_encontrado() {
+
+    int idInexistente = 999;
+    
+    when(ratedAnimeService.getRatedAnimeById(idInexistente)).thenReturn(null);
+
+    ResponseEntity<RatedAnimeDTO> respuesta = ratedAnimeController.buscarRatedAnime(idInexistente);
+
+    assertNotNull(respuesta);
+
+    assertEquals(HttpStatus.NOT_FOUND, respuesta.getStatusCode()); 
+
+    assertNull(respuesta.getBody());
+
+    }
+
+    @Test
+    void eliminar_anime_puntuado_exitoso() {
+
+    int idEliminar = 1;
+
+    ResponseEntity<Void> respuesta = ratedAnimeController.eliminarRatedAnime(idEliminar);
+
+    assertNotNull(respuesta);
+
+    assertEquals(HttpStatus.NO_CONTENT, respuesta.getStatusCode());
+}
+  
 }
