@@ -15,10 +15,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Filtro JWT que se ejecuta una vez por cada request HTTP.
- * Extrae el token, limpia el formato de los roles y da acceso al contexto.
- */
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -40,26 +36,26 @@ public class JwtFilter extends OncePerRequestFilter {
                 String username = jwtUtil.extractUsername(token);
                 String role = jwtUtil.extractRole(token);
 
-                // Limpieza de corchetes [ ] o comillas que suelen meter las librerías JWT
+                
                 if (role != null) {
                     role = role.replace("[", "").replace("]", "").replace("\"", "").trim();
                 }
 
                 System.out.println("Filtro procesando - Usuario: " + username + " -> Autoridad limpia inyectada: " + role);
 
-                // Construye el objeto de autenticación con la autoridad limpia
+                
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                         username,
                         null,
                         List.of(new SimpleGrantedAuthority(role))
                 );
 
-                // Registra la autenticación en el contexto de seguridad de este hilo
+                
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
         }
 
-        // Continúa con el siguiente filtro de la cadena
+        
         filterChain.doFilter(request, response);
     }
 }

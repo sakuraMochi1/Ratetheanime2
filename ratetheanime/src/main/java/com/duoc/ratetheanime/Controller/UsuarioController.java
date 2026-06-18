@@ -66,7 +66,6 @@ public class UsuarioController {
         
         log.info("PUT /api/v1/usuarios/{} - Usuario actualizado exitosamente", id);
         
-        // 2. IMPORTANTE: Retornamos el objeto "actualizado" que ya obtuvimos
         return ResponseEntity.ok(actualizado);
     }
 
