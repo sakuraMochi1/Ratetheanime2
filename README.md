@@ -206,11 +206,30 @@ docker-compose up --build
 
 ---
 
+## Pruebas Unitarias
+
+El proyecto incluye pruebas unitarias para validar el correcto funcionamiento de los componentes principales de la aplicación.
+
+## Ejecutar Pruebas Unitarias:
+
+```text
+.\mvnw.cmd test
+```
+## Tecnologias Utilizadas:
+
+* JUnit5
+* Spring Boot Test
+* Mockito
+
+---
+
 ## Autores
 
 * Augusto Medina
 * Arturo Cabello
 
 ---
+
+
 
 
