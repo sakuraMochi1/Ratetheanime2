@@ -1,9 +1,10 @@
 {
   "info": {
-    "_postman_id": "2973b7b1-c78c-42f8-978d-ad9e038ce744",
+    "_postman_id": "36595aee-0f54-4057-98e8-289a10af5215",
     "name": "ratetheanime",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "56019516"
+    "_exporter_id": "54960376",
+    "_collection_link": "https://go.postman.co/collection/54960376-36595aee-0f54-4057-98e8-289a10af5215?source=collection_link"
   },
   "item": [
     {
